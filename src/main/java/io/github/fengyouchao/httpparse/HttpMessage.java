@@ -35,6 +35,9 @@ public class HttpMessage implements Serializable{
   }
 
   public HttpMessage setHeader(String header, Object value) {
+    if (value == null) {
+      return this;
+    }
     headers.setHeader(header, value.toString());
     return this;
   }

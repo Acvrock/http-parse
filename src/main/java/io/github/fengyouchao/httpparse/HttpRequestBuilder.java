@@ -119,6 +119,7 @@ public class HttpRequestBuilder {
     }
     if(body!= null){
       request.setBody(body);
+      request.setHeader(HttpHeaders.CONTENT_LENGTH, body.length);
     }
     return request;
   }
