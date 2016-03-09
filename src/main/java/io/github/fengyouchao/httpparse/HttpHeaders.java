@@ -1,5 +1,6 @@
 package io.github.fengyouchao.httpparse;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,33 +12,33 @@ import java.util.List;
  * @version 1.0
  * @date Mar 03,2016 9:32 AM
  */
-public class HttpHeaders implements Iterable<HttpHeader> {
+public class HttpHeaders implements Iterable<HttpHeader>, Serializable {
 
   private List<HttpHeader> headers = new ArrayList<>();
 
-  public HttpHeaders addHeader(String name, String value){
+  public HttpHeaders addHeader(String name, String value) {
     headers.add(new HttpHeader(name, value));
     return this;
   }
 
-  public HttpHeaders setHeader(String name, String value){
+  public HttpHeaders setHeader(String name, String value) {
     removeHeader(name);
     addHeader(name, value);
     return this;
   }
 
-  public HttpHeader removeHeader(String name){
+  public HttpHeader removeHeader(String name) {
     for (int i = 0; i < headers.size(); i++) {
-      if(headers.get(i).getName().equalsIgnoreCase(name)){
+      if (headers.get(i).getName().equalsIgnoreCase(name)) {
         return headers.remove(i);
       }
     }
     return null;
   }
 
-  public HttpHeader getHeader(String name){
-    for(HttpHeader header: headers){
-      if(header.getName().equalsIgnoreCase(name)){
+  public HttpHeader getHeader(String name) {
+    for (HttpHeader header : headers) {
+      if (header.getName().equalsIgnoreCase(name)) {
         return header;
       }
     }
@@ -51,9 +52,9 @@ public class HttpHeaders implements Iterable<HttpHeader> {
         '}';
   }
 
-  public String originalString(){
+  public String originalString() {
     StringBuilder builder = new StringBuilder();
-    for(HttpHeader header: headers){
+    for (HttpHeader header : headers) {
       builder.append(header.originalString());
     }
     return builder.toString();

@@ -1,8 +1,7 @@
 package io.github.fengyouchao.httpparse;
 
+import java.io.Serializable;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The class <code></code>
@@ -11,11 +10,11 @@ import java.util.List;
  * @version 1.0
  * @date Mar 03,2016 9:28 AM
  */
-public class HttpHeader {
+public class HttpHeader implements Serializable {
   private String name;
   private String value;
 
-  public HttpHeader(String name, String value){
+  public HttpHeader(String name, String value) {
     this.name = name;
     this.value = value;
   }
@@ -37,7 +36,7 @@ public class HttpHeader {
     this.value = value;
   }
 
-  public byte[] getBytes(){
+  public byte[] getBytes() {
     return (name + ": " + value + "/r/n").getBytes(Charset.forName("iso-8859-1"));
   }
 
@@ -67,7 +66,7 @@ public class HttpHeader {
         '}';
   }
 
-  public String originalString(){
+  public String originalString() {
     return name + ": " + value + "\r\n";
   }
 }

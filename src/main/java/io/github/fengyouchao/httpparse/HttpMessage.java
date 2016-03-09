@@ -2,6 +2,7 @@ package io.github.fengyouchao.httpparse;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.charset.Charset;
 
 import static io.github.fengyouchao.httpparse.HttpHeaders.CONTENT_ENCODING;
@@ -16,7 +17,7 @@ import static io.github.fengyouchao.httpparse.HttpHeaders.TRANSFER_ENCODING;
  * @version 1.0
  * @date Mar 03,2016 9:24 AM
  */
-public class HttpMessage {
+public class HttpMessage implements Serializable{
 
   private HttpHeaders headers = new HttpHeaders();
   private String protocolLine;
