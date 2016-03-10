@@ -13,8 +13,10 @@ import java.util.regex.Pattern;
 public class HttpUtils {
 
   private static Pattern headerCharsetPattern = Pattern.compile("charset=([\\w-]+)");
+//  private static Pattern htmlCharsetPattern = Pattern
+//      .compile("(?i)<meta\\s+http-equiv=\"Content-Type\"\\s+content=\"text/html;\\s*charset=([\\w-]+)\"\\s*/>");
   private static Pattern htmlCharsetPattern = Pattern
-      .compile("(?i)<meta\\s+http-equiv=\"Content-Type\"\\s+content=\"text/html; charset=([\\w-]+)\"\\s+/>");
+      .compile("(?i)<meta[^<^>]*;\\s*charset=([\\w-]+)\">");
   private static Pattern htmlCharsetPattern2 = Pattern
       .compile("(?i)<meta\\s+charset=\"([\\w-]+)\"");
   private static Pattern urlPattern =
