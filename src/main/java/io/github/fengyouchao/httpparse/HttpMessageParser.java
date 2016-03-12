@@ -147,7 +147,6 @@ public class HttpMessageParser extends AbstractHttpParser {
       } catch (NumberFormatException e) {
         throw new HttpParseException("Bad chunked length:" + line);
       }
-      System.out.println(chunked_max_length);
       if (chunked_max_length == 0) {
         status = Status.WRITE_COMPLETED;
         setHttpMessageBody();
